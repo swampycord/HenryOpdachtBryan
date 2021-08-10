@@ -2,6 +2,7 @@ package sr.bludots.memory;
 
 import java.util.Arrays;
 
+
 public class Assignment1 {
 	// assignment 1:
 
@@ -10,10 +11,10 @@ public class Assignment1 {
 	private String[] arr;
 
 	public void naamEnAantalRecords(String[] arr, String naam) {
-		t0 = System.currentTimeMillis();
 		// vul een array met 1 miljoen records (allemaal zelfde naam)
+		t0 = System.currentTimeMillis();
 		this.arr = arr;
-		for (int i = 0; i <= arr.length - 1; i++) {
+		for (int i = 1; i <= arr.length - 1; i++) {
 			arr[i] = naam;
 		}
 
@@ -31,16 +32,22 @@ public class Assignment1 {
 		arr[laatsteIndex] = derdeNaam;
 
 		System.out.println(Arrays.toString(arr));
-		t1 = System.currentTimeMillis();
 	}
 
 	// zoek naar dit record en laat zien hoe lang dit duurt.
 
-	public void tijdsDuur() {
+	public void zoekRecord(Integer key) {
+		
+		for (int i = 1; i <= arr.length - 1; i++) {
+			if (arr[key] == arr[i]) {
+				System.out.println(arr[i]);
+				break;
+			}
+		}
+		t1 = System.currentTimeMillis();
+		
+		System.out.println("Duration: "+ (t1 - t0)+ " milliseconds");
 
-		Long tijdsduur = t1 - t0;
-
-		System.out.println("Tijdsduur: " + tijdsduur + " milliseconde");
 
 	}
 }

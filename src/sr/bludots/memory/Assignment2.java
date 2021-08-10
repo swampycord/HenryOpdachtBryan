@@ -13,38 +13,47 @@ public class Assignment2 {
 	// maak 1 record met een andere naam,
 	// meet ook hoe lang het duurt om dit record via zijn key op te vragen...
 
-	private HashMap<Integer, String> namen = new HashMap<>();
-	private Long t0;
-	private Long t1;
-	private Integer totaalRecords;
-	private String melding = "";
+	private HashMap<Integer, String> hashMap;
+	private Integer records;
+	private Long tr0;
+	private Long tr1;
 
-	public void aantalRecords(Integer totaalRecords) {
-		this.totaalRecords = totaalRecords;
+	public void aantalRecordsEnNaam(HashMap<Integer, String> hashMap, Integer records, String naam) {
+		tr0 = System.currentTimeMillis();
+		this.hashMap = hashMap;
+		this.records = records;
+
+		for (int i = 1; i <= records; i++) {
+			hashMap.put(i, naam);
+		}
+
+		System.out.println(hashMap);
+		tr1 = System.currentTimeMillis();
+	}
+	
+	public void tijdsDuurRecordAanmaken() {
+		System.out.println("Aanmaken van " + records + " records: " + (tr1 - tr0) + " milliseconde");
 	}
 
-	public void recordsEnNamen(Integer index, String naam) {
-		t0 = System.currentTimeMillis();
+	public void veranderIndexNaam(Integer record, String naam) {
 
-		for (int i = 0; i <= totaalRecords; i++) {
-			if (index <= totaalRecords && naam.matches("^[a-zA-Z]*$")) {
-				if (namen.containsKey(index)) {
-					namen.replace(index, naam);
-				} else {
-					namen.put(index, naam);
-				}
-			} else if (index > totaalRecords) {
-				melding = index + " en hoger zijn buiten totale records";
+		hashMap.put(record, naam);
+
+		System.out.println("Record Update " + hashMap);
+	}
+
+	public void vraagNaarRecord(Integer vraagRecord) {
+		Long t0 = System.currentTimeMillis();
+		for (int i = 0; i <= records; i++) {
+			if (hashMap.containsKey(vraagRecord) == hashMap.containsKey(i)) {
+				System.out.println("Opgevraagd record: " + hashMap.get(i));
+				break;
 			}
 		}
-		t1 = System.currentTimeMillis();
+		Long t1 = System.currentTimeMillis();
 
-	}
+		System.out.println("Opvraagtijdsduur: " + (t1 - t0) + " milliseconde");
 
-	public void showRecords() {
-		System.out.println(namen);
-		System.out.println("Tijdsduur: " + (t1 - t0) + " milliseconde");
-		System.err.println(melding);
 	}
 
 }

@@ -1,33 +1,27 @@
 package sr.bludots.memory;
 
+import java.util.HashMap;
+
 public class Launcher {
 
 	public static void main(String[] args) {
 //		Assignment 1:
-
+//
 //		String[] namen = new String[1000000];
 //		Assignment1 test = new Assignment1();
 //		test.naamEnAantalRecords(namen, "Bryan");
 //		test.wijzigEersteMidLaatsteRecord("Winston", "Mario", "Cheryl");
-//		test.tijdsDuur();
+//		test.zoekRecord(999999);
 
-		
-		
-		
 //		Assignment2
-		
-//		Assignment2 test = new Assignment2();
-//		test.aantalRecords(5);//Eers aantal records openen
-//		test.recordsEnNamen(0, "Bryan");//Records value geven
-//		test.recordsEnNamen(1, "Winston");
-//		test.recordsEnNamen(1, "Mario");//Verplaatst "Winston" met "Mario"
-//		test.recordsEnNamen(2, "Winston");
-//		test.recordsEnNamen(3, "Antusha");
-//		test.recordsEnNamen(4, "Tim");
-//		test.recordsEnNamen(5, "Henry");
-//		test.recordsEnNamen(6, "Kirsten");
-//		test.showRecords();
 
+		HashMap<Integer, String> lijstNamen = new HashMap<>();
+		Assignment2 test2 = new Assignment2();
+
+		test2.aantalRecordsEnNaam(lijstNamen, 10000, "Bryan");
+		test2.tijdsDuurRecordAanmaken();
+		test2.veranderIndexNaam(3, "Winston");
+		test2.vraagNaarRecord(9999);
 	}
 
 }
